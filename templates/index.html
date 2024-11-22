@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto de Venta - Refaccionaria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Menú de opciones -->
+        <div class="menu">
+            <button onclick="mostrarFormulario('nuevo')" class="menu-btn">Nuevo</button>
+            <button onclick="mostrarFormulario('modificar')" class="menu-btn">Modificar</button>
+            <button onclick="mostrarFormulario('eliminar')" class="menu-btn">Eliminar</button>
+        </div>
+
+        <!-- Formulario dinámico -->
+        <div id="formularios">
+            <!-- Formulario para agregar un producto -->
+            <form id="formNuevo" class="form" style="display: none;">
+                <h3>Agregar Producto</h3>
+                <input type="text" name="nombre" placeholder="Nombre del producto" required>
+                <input type="text" name="numero" placeholder="Número del producto" required>
+                <input type="number" name="cantidad" placeholder="Cantidad" required>
+                <button type="button" onclick="enviarFormulario('nuevo')">Guardar</button>
+            </form>
+            
+            <!-- Formulario para modificar un producto -->
+            <form id="formModificar" class="form" style="display: none;">
+                <h3>Modificar Producto</h3>
+                <input type="text" name="id" placeholder="ID del producto" required>
+                <input type="text" name="nombre" placeholder="Nuevo nombre" required>
+                <input type="number" name="cantidad" placeholder="Nueva cantidad" required>
+                <button type="button" onclick="enviarFormulario('modificar')">Actualizar</button>
+            </form>
+
+            <!-- Formulario para eliminar un producto -->
+            <form id="formEliminar" class="form" style="display: none;">
+                <h3>Eliminar Producto</h3>
+                <input type="text" name="id" placeholder="ID del producto" required>
+                <button type="button" onclick="enviarFormulario('eliminar')">Eliminar</button>
+            </form>
+        </div>
+
+        <!-- Tabla de productos vendidos -->
+        <div class="tabla">
+            <h3>Últimos 10 productos vendidos</h3>
+            <table id="tablaProductos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Número</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Los productos se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
