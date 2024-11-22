@@ -10,15 +10,16 @@ function enviarFormulario(tipo) {
         };
     } else if (tipo === 'modificar') {
         formData = {
-            id: document.querySelector("input[name='id']").value,
-            nombre: document.querySelector("input[name='nombre']").value,
-            cantidad: document.querySelector("input[name='cantidad']").value
+            id: document.querySelector("input[name='idModificar']").value,
+            nombre: document.querySelector("input[name='nombreModificar']").value,
+            cantidad: document.querySelector("input[name='cantidadModificar']").value
         };
     } else if (tipo === 'eliminar') {
         formData = {
-            id: document.querySelector("input[name='id']").value
+            id: document.querySelector("input[name='idEliminar']").value
         };
     }
+    console.log("Datos enviados", formData) //mostrar datos enviados
 
     // Realizar la solicitud AJAX (usando Fetch API)
     let url = tipo === 'nuevo' ? '/nuevo' : tipo === 'modificar' ? '/modificar' : '/eliminar';
@@ -33,11 +34,18 @@ function enviarFormulario(tipo) {
     })
     .then(response => response.json())
     .then(data => {
-        alert(data.message);  // Mostrar mensaje de éxito
+        /*if (data.message){
+            alert(data.message);  // Mostrar mensaje de éxito
+        } else {
+            alert(data.error || "Error al procesar la solicitud"); // Mensaje de error
+        }*/
+
+        alert(data.message);
         cargarProductos();    // Recargar la tabla de productos después de la acción
     })
     .catch(error => {
         console.error('Error:', error);
+        alert("Error al conectarse con el servidor.");
     });
 }
 
