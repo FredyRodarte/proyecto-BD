@@ -104,3 +104,12 @@ th {
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
+body {
+    background-image: url('/static/images/auto.jpg'); /* Ruta a tu imagen */
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen */
+    height: 100vh; /* Asegura que cubra la altura de la ventana */
+    margin: 0; /* Elimina márgenes predeterminados */
+}
